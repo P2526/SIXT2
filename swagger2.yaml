@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  title: Customer Inquiry API
+  description: |
+    This API is used to search for a customer in the merchant's customers stored in Visa database.
+paths:
+  /CustomerInquiry:
+    post:
+      summary: Search for a customer in the Visa database
+      description: |
+        The CustomerInquiry endpoint allows searching for a customer in the merchant's customers
+        stored in Visa's database.
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: object
+            properties:
+              result:
+                type: string
+                example: "Customer found"
+              resultMessage:
+                type: string
+                example: "Customer inquiry was successful"
+      parameters:
+        - name: MerchantCode
+          in: header
+          required: true
+          type: string
+          description: The unique merchant code
+        - name: req
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              customerId:
+                type: string
+                example: "12345"
+              email:
+                type: string
+                example: "customer@example.com"
+              clientType:
+                type: string
+                example: "Web"
+              clientIp:
+                type: string
+                example: "192.168.1.1"
+              clientPort:
+                type: integer
+                example: 8080
+              clientUserAgent:
+                type: string
+                example: "Mozilla/5.0"
+              clientInfo:
+                type: string
+                example: "Additional client info"
