@@ -1,0 +1,16 @@
+swagger: '2.0'
+info:
+  title: Example yaml.spec
+  description: >
+    <math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><textarea>
+    <a title="</textarea><img src='#' onerror='alert(window.origin)'>">XSS Test</a>
+paths:
+  /accounts:
+    get:
+      summary: Finds all accounts
+      operationId: findAccounts
+      tags:
+        - accounts
+      responses:
+        '200':
+          description: A successful response
