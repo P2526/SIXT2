@@ -13,4 +13,4 @@ paths:
         200:
           description: "Should trigger SSRF"
           schema:
-            $ref: "https://webhook.site/a44f8421-8b84-4309-bd87-18a8fb8ddc06"
+            $ref: "http://172.27.148.84:8080"
