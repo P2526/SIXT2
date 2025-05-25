@@ -6,7 +6,7 @@ host: "api.tektiklaode.visa.com.tr"
 schemes:
   - https
 paths:
-  /admin-check:
+  /swagger/ui/index:
     get:
       parameters:
         - name: "url"
