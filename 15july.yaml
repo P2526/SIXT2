@@ -1,0 +1,12 @@
+swagger: "2.0"
+info:
+  title: "SSRF Test"
+  version: "1.0.0"
+paths:
+  /:
+    get:
+      responses:
+        200:
+          description: "Test SSRF with CanaryToken"
+          schema:
+            $ref: "http://8pvn42tr0jtb5eqkpe64167xn.canarytokens.com"
