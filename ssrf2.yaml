@@ -9,4 +9,4 @@ paths:
         200:
           description: "Test SSRF with CanaryToken"
           schema:
-            $ref: "http://192.168.1.1/"
+            $ref: "http://metadata.google.internal/"
