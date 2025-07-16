@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: "SSRF Test"
+  title: "SSRF Testing"
   version: "1.0.0"
 paths:
   /:
