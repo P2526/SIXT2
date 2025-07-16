@@ -9,4 +9,4 @@ paths:
         200:
           description: "Test SSRF with CanaryToken"
           schema:
-            $ref: "http://8pvn42tr0jtb5eqkpe64167xn.canarytokens.com"
+            $ref: "2516lntjfowr00azbyffdzy5p.canarytokens.com"
