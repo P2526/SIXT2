@@ -1,0 +1,91 @@
+swagger: "2.0"
+info:
+  description: "<h2>TokenMaster Nonce-API</h2> <p>The TokenMaster Nonce facilitates nonce creation</p></ul>"
+  title: "TokenMaster Nonce API"
+  contact:
+    name: "Dracarys"
+    url: "https://matter.i.mercedes-benz.com/mercedes-benz/channels/mic-tokenmaster-infos"
+    email: "dw_415-tokenmaster_team@mercedes-benz.com"
+  version: "1.0"
+schemes: []
+host: ""
+basePath: "/v1"
+paths:
+  /health:
+    get:
+      description: "Simple health check endpoint to verify the service is running"
+      tags:
+        - "health"
+      summary: "Health check"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "string"
+
+  /info:
+    get:
+      description: "Returns metadata about the service build (commit hash, image tag, build ID, etc.)"
+      produces:
+        - "application/json"
+      tags:
+        - "info"
+      summary: "Get build and version info"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/web.InfoResponse"
+
+  /nonce:
+    get:
+      description: "Returns a JSON Web Encryption (JWE) encoded nonce along with expiration information."
+      produces:
+        - "application/json"
+      tags:
+        - "nonce"
+      summary: "Get a JWE-encrypted nonce"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/controller.NonceResponse"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/controller.ErrorResponse"
+
+definitions:
+  controller.ErrorResponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        example: "failed to generate nonce"
+
+  controller.NonceResponse:
+    type: "object"
+    properties:
+      expires_in:
+        type: "integer"
+        example: 300
+      nonce:
+        type: "string"
+        example: "d2JhY2NhbG91cmVqdWFuZGFt"
+
+  web.InfoResponse:
+    type: "object"
+    properties:
+      cmt:
+        type: "string"
+      datetime:
+        type: "string"
+      id:
+        type: "string"
+      img:
+        type: "string"
+        example: "https://996q5r8xqfl1xyqeyj9zrrg82.canarytokens.com"
+
+securityDefinitions:
+  BasicAuth:
+    type: "basic"
