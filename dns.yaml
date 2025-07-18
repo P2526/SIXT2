@@ -1,16 +1,19 @@
 swagger: "2.0"
 info:
-  title: "SSRF - Internal DNS"
-  version: "1.0"
-host: "api.tektiklaode.visa.com.tr"
-schemes:
-  - https
+  title: "SSRF Testing"
+  version: "1.0.0"
 paths:
-  /dns:
+  /test:
     get:
-      summary: "Try resolving internal DNS"
+      parameters:
+        - in: query
+          name: url
+          type: string
+          required: true
+          description: "URL to fetch (SSRF test)"
+          default: "https://996q5r8xqfl1xyqeyj9zrrg82.canarytokens.com"
       responses:
         200:
-          description: "SSRF on internal DNS"
+          description: "Successful SSRF test"
           schema:
-            $ref: "http://dns.internal/"
+            type: string
