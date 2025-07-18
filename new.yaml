@@ -11,7 +11,7 @@ paths:
           type: string
           required: true
           description: "URL to fetch (SSRF test)"
-          default: "https://996q5r8xqfl1xyqeyj9zrrg82.canarytokens.com"
+          default: "http://127.0.0.1:8081/"
       responses:
         200:
           description: "Successful SSRF test"
